@@ -27,7 +27,10 @@
          PRE-INTRO: Hand Gesture Splash
          ============================================= -->
     <div id="gesture-splash">
-        <img src="handgesture.jpeg" alt="Domain Expansion Gesture">
+        <div class="gesture-container">
+            <img src="handgesture.jpeg" alt="Domain Expansion Gesture">
+            <div class="gesture-text">DOMAIN EXPANSION</div>
+        </div>
     </div>
 
     <!-- =============================================
@@ -160,7 +163,7 @@
         setTimeout(() => {
             gestureSplash.classList.add('fade-out');
             setTimeout(() => gestureSplash.style.display = 'none', 500);
-        }, 400);
+        }, 500);
 
         // ─── Scene Setup ────────────────────────────
         const scene = new THREE.Scene();
