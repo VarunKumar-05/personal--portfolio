@@ -254,13 +254,13 @@ body.scrollable {
 }
 
 /* ============================================
-   Portfolio Content (blank page)
+   Portfolio Content
    ============================================ */
 #portfolio-content {
     position: relative;
     z-index: 8;
     min-height: 100vh;
-    background-color: var(--void-black);
+    background: linear-gradient(180deg, #000000 0%, #050015 30%, #0a0020 60%, #050015 85%, #000000 100%);
     opacity: 0;
     transition: opacity 1.5s ease;
     display: none;
@@ -270,6 +270,334 @@ body.scrollable {
     display: block;
     opacity: 1;
 }
+
+/* ─── Hero Section ──────────────────────────── */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+}
+
+.hero-badge {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--aesthetic-purple);
+    border: 1px solid rgba(183, 148, 244, 0.3);
+    padding: 8px 24px;
+    border-radius: 30px;
+    margin-bottom: 28px;
+    background: rgba(183, 148, 244, 0.05);
+    animation: fadeSlideUp 1s ease 0.2s both;
+}
+
+.hero-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: 10px;
+    background: linear-gradient(180deg, #ffffff 0%, var(--aesthetic-purple) 60%, var(--purple-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    animation: titleReveal 1.2s ease 0.5s both;
+    filter: drop-shadow(0 0 60px rgba(183, 148, 244, 0.25));
+}
+
+.hero-tagline {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(183, 148, 244, 0.7);
+    margin-top: 16px;
+    animation: fadeSlideUp 1s ease 0.8s both;
+}
+
+.hero-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--aesthetic-purple), transparent);
+    margin: 28px auto;
+    animation: fadeIn 1s ease 1s both;
+}
+
+.hero-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(224, 224, 224, 0.65);
+    max-width: 520px;
+    animation: fadeSlideUp 1s ease 1.2s both;
+}
+
+.hero-social-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 36px;
+    animation: fadeSlideUp 1s ease 1.5s both;
+}
+
+.social-icon-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(183, 148, 244, 0.2);
+    background: rgba(183, 148, 244, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(183, 148, 244, 0.7);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon-link:hover {
+    background: rgba(183, 148, 244, 0.15);
+    border-color: var(--aesthetic-purple);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(183, 148, 244, 0.25);
+}
+
+/* ─── Section Shared Styles ─────────────────── */
+.portfolio-section {
+    padding: 100px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--aesthetic-purple);
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #ffffff;
+    background: linear-gradient(180deg, #ffffff 30%, rgba(183, 148, 244, 0.6) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ─── Skills Section ────────────────────────── */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+.skill-category {
+    background: rgba(183, 148, 244, 0.03);
+    border: 1px solid rgba(183, 148, 244, 0.1);
+    border-radius: 16px;
+    padding: 32px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-category:hover {
+    border-color: rgba(183, 148, 244, 0.25);
+    background: rgba(183, 148, 244, 0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(183, 148, 244, 0.08);
+}
+
+.skill-category-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.skill-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding: 8px 18px;
+    border-radius: 20px;
+    color: rgba(224, 224, 224, 0.8);
+    border: 1px solid rgba(183, 148, 244, 0.15);
+    background: rgba(183, 148, 244, 0.04);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-tag:hover {
+    border-color: rgba(183, 148, 244, 0.4);
+    background: rgba(183, 148, 244, 0.1);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(183, 148, 244, 0.15);
+}
+
+.skill-tag.tag-ai {
+    border-color: rgba(124, 77, 255, 0.25);
+    background: rgba(124, 77, 255, 0.06);
+    color: rgba(183, 148, 244, 0.9);
+}
+
+.skill-tag.tag-ai:hover {
+    border-color: rgba(124, 77, 255, 0.5);
+    background: rgba(124, 77, 255, 0.12);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(124, 77, 255, 0.2);
+}
+
+/* ─── Achievements Section ──────────────────── */
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 32px;
+    background: rgba(183, 148, 244, 0.03);
+    border: 1px solid rgba(183, 148, 244, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.achievement-card:hover {
+    border-color: rgba(183, 148, 244, 0.25);
+    background: rgba(183, 148, 244, 0.06);
+    transform: translateX(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(183, 148, 244, 0.05);
+}
+
+.achievement-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(183, 148, 244, 0.06);
+    border: 1px solid rgba(183, 148, 244, 0.1);
+}
+
+.achievement-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.achievement-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.5px;
+}
+
+.achievement-badge {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--aesthetic-purple);
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(183, 148, 244, 0.3);
+    background: rgba(183, 148, 244, 0.08);
+    white-space: nowrap;
+}
+
+/* ─── Contact Section ───────────────────────── */
+.contact-section {
+    padding: 100px 24px 60px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.contact-link {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(183, 148, 244, 0.7);
+    text-decoration: none;
+    padding: 14px 32px;
+    border: 1px solid rgba(183, 148, 244, 0.15);
+    border-radius: 30px;
+    background: rgba(183, 148, 244, 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-link:hover {
+    color: #ffffff;
+    border-color: var(--aesthetic-purple);
+    background: rgba(183, 148, 244, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(183, 148, 244, 0.2);
+}
+
+.footer-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: rgba(183, 148, 244, 0.3);
+    margin-top: 60px;
+    text-transform: uppercase;
+}
+
 
 /* ============================================
    Animations
@@ -320,5 +648,63 @@ body.scrollable {
     .cross-gesture svg {
         width: 45px;
         height: 45px;
+    }
+
+    .hero-name {
+        letter-spacing: 4px;
+    }
+
+    .hero-tagline {
+        letter-spacing: 4px;
+        font-size: 0.85rem;
+    }
+
+    .hero-badge {
+        letter-spacing: 3px;
+        font-size: 0.7rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .achievement-card {
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-link {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+    .gesture-text {
+        font-size: 1rem;
+        letter-spacing: 8px;
+    }
+
+    .portfolio-section {
+        padding: 60px 20px;
+    }
+
+    .hero-social-links {
+        gap: 14px;
+    }
+
+    .social-icon-link {
+        width: 42px;
+        height: 42px;
     }
 }

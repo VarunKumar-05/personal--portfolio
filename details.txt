@@ -1,0 +1,12 @@
+Name:varun kumar
+year: III year - Undergrad
+domain : Artificial Intelligence 
+
+GitHub link :https://github.com/VarunKumar-05
+linked In:https://www.linkedin.com/in/varun-kumar-balasubramanian/
+leetcode url :https://leetcode.com/u/varunkumarBalasubramanian/
+codeforces url : https://codeforces.com/profile/Varunkumar-01
+
+skills : python, java, Docker, SQL , MongoDB , GIT , Machine Learning , Agentic AI , Multi-Agents, RAG , Deep Learning , Google Multi agents Modules 
+
+Achievements : finalist in Synaptix AI Hackathon by IIT Madras, Finalist in Competitive Programming by IIT Madras, Semi Finalist in TATA Imagination Challenge
