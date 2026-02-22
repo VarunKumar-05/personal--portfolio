@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write — Infinite Void Blog</title>
+    <meta name="description" content="Write a new blog post — Infinite Void.">
+    <link rel="stylesheet" href="blog.css">
+</head>
+
+<body>
+
+    <!-- Film Grain -->
+    <div id="grain"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="blog-nav">
+        <div class="blog-nav-left">
+            <a href="blog.html" class="nav-back-link">← Blog</a>
+            <span class="nav-brand">WRITE</span>
+        </div>
+    </nav>
+
+    <!-- Editor -->
+    <main class="editor-container">
+
+        <!-- Title -->
+        <input type="text" class="editor-title-input" id="editor-title" placeholder="Enter title..." autocomplete="off"
+            spellcheck="true">
+
+        <!-- Tags -->
+        <div class="editor-tags-wrapper" id="tags-container">
+            <span class="editor-tags-label">Tags</span>
+            <input type="text" class="editor-tags-input" id="tags-input" placeholder="Add tag, press Enter...">
+        </div>
+
+        <!-- Toolbar -->
+        <div class="editor-toolbar">
+            <button class="toolbar-btn" data-cmd="bold" title="Bold"><b>B</b></button>
+            <button class="toolbar-btn" data-cmd="italic" title="Italic"><i>I</i></button>
+            <button class="toolbar-btn" data-cmd="underline" title="Underline"><u>U</u></button>
+            <button class="toolbar-btn" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+            <div class="toolbar-divider"></div>
+            <button class="toolbar-btn" data-cmd="formatBlock" data-val="h1" title="Heading 1">H1</button>
+            <button class="toolbar-btn" data-cmd="formatBlock" data-val="h2" title="Heading 2">H2</button>
+            <button class="toolbar-btn" data-cmd="formatBlock" data-val="h3" title="Heading 3">H3</button>
+            <button class="toolbar-btn" data-cmd="formatBlock" data-val="p" title="Paragraph">¶</button>
+            <div class="toolbar-divider"></div>
+            <button class="toolbar-btn" data-cmd="insertUnorderedList" title="Bullet List">• List</button>
+            <button class="toolbar-btn" data-cmd="insertOrderedList" title="Numbered List">1. List</button>
+            <button class="toolbar-btn" data-cmd="formatBlock" data-val="blockquote" title="Blockquote">❝</button>
+            <button class="toolbar-btn" data-cmd="formatBlock" data-val="pre" title="Code Block">⟨/⟩</button>
+            <div class="toolbar-divider"></div>
+            <button class="toolbar-btn" data-cmd="createLink" title="Insert Link">🔗</button>
+            <button class="toolbar-btn" data-cmd="insertImage" title="Insert Image">🖼</button>
+            <div class="toolbar-divider"></div>
+            <button class="toolbar-btn" data-cmd="removeFormat" title="Clear Formatting">✕</button>
+        </div>
+
+        <!-- Content Editable -->
+        <div class="editor-content" id="editor-content" contenteditable="true" spellcheck="true"></div>
+
+        <!-- Actions -->
+        <div class="editor-actions">
+            <button class="btn-delete" id="btn-delete" style="display: none;">🗑 Delete</button>
+            <button class="btn-export" id="btn-export">⤓ Export HTML</button>
+            <button class="btn-save" id="btn-save">✦ Save Post</button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+        <div class="blog-footer-text">© 2026 Varun Kumar — Built with cursed energy</div>
+    </footer>
+
+    <script src="blog.js"></script>
+</body>
+
+</html>

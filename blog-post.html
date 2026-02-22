@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post — Infinite Void Blog</title>
+    <meta name="description" content="Read blog post — Infinite Void.">
+    <link rel="stylesheet" href="blog.css">
+</head>
+
+<body>
+
+    <!-- Film Grain -->
+    <div id="grain"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="blog-nav">
+        <div class="blog-nav-left">
+            <a href="blog.html" class="nav-back-link">← Blog</a>
+            <span class="nav-brand">VOID LOG</span>
+        </div>
+        <a href="" class="nav-back-link" id="edit-link">✎ Edit</a>
+    </nav>
+
+    <!-- Post Content -->
+    <main class="post-container">
+
+        <!-- Header -->
+        <header class="post-header">
+            <div class="post-meta">
+                <span id="post-date"></span>
+                <span class="dot"></span>
+                <span id="post-readtime"></span>
+            </div>
+            <h1 class="post-title" id="post-title"></h1>
+            <div class="post-tags" id="post-tags"></div>
+        </header>
+
+        <!-- Body -->
+        <article class="post-body" id="post-body">
+            <!-- Rendered by JS -->
+        </article>
+
+        <!-- Footer Actions -->
+        <div class="post-actions">
+            <a href="blog.html" class="post-action-link">← All Posts</a>
+            <button class="post-action-link" id="delete-post-btn"
+                style="color: rgba(255,100,100,0.7); border-color: rgba(255,100,100,0.15);">
+                Delete Post
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+        <div class="blog-footer-text">© 2026 Varun Kumar — Built with cursed energy</div>
+    </footer>
+
+    <script src="blog.js"></script>
+</body>
+
+</html>

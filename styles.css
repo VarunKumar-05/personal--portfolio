@@ -599,6 +599,112 @@ body.scrollable {
 }
 
 
+/* ─── Blog CTA Section ──────────────────────── */
+.blog-cta-section {
+    padding: 60px 24px 100px;
+}
+
+.blog-cta-card {
+    position: relative;
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    background: rgba(183, 148, 244, 0.03);
+    border: 1px solid rgba(183, 148, 244, 0.1);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blog-cta-card:hover {
+    border-color: rgba(183, 148, 244, 0.25);
+    background: rgba(183, 148, 244, 0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 60px rgba(183, 148, 244, 0.08);
+}
+
+.blog-cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(124, 77, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ctaGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes ctaGlowPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 1;
+    }
+}
+
+.blog-cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.blog-cta-icon {
+    font-size: 2.5rem;
+    color: var(--aesthetic-purple);
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(183, 148, 244, 0.5);
+}
+
+.blog-cta-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 900;
+    letter-spacing: 8px;
+    background: linear-gradient(180deg, #ffffff 0%, var(--aesthetic-purple) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+}
+
+.blog-cta-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(224, 224, 224, 0.5);
+    margin-bottom: 32px;
+}
+
+.blog-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 30px;
+    border: 1px solid var(--aesthetic-purple);
+    background: linear-gradient(135deg, rgba(124, 77, 255, 0.25), rgba(183, 148, 244, 0.1));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blog-cta-button:hover {
+    background: linear-gradient(135deg, rgba(124, 77, 255, 0.45), rgba(183, 148, 244, 0.25));
+    box-shadow: 0 0 40px rgba(183, 148, 244, 0.3), 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
 /* ============================================
    Animations
    ============================================ */

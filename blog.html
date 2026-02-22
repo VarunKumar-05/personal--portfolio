@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Infinite Void</title>
+    <meta name="description" content="Thoughts from the Infinite Void — Blog by Varun Kumar.">
+    <link rel="stylesheet" href="blog.css">
+</head>
+
+<body>
+
+    <!-- Film Grain -->
+    <div id="grain"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="blog-nav">
+        <div class="blog-nav-left">
+            <a href="index.html" class="nav-back-link">← Portfolio</a>
+            <span class="nav-brand">VOID LOG</span>
+        </div>
+        <a href="blog-editor.html" class="nav-new-post-btn" id="new-post-btn">
+            ✦ New Post
+        </a>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="blog-page-header">
+        <div class="blog-page-label">Transmissions</div>
+        <h1 class="blog-page-title">VOID LOG</h1>
+        <p class="blog-page-subtitle">Thoughts, experiments, and dispatches from the infinite void.</p>
+        <div class="blog-page-divider"></div>
+    </header>
+
+    <!-- Blog Grid -->
+    <main class="blog-grid-container">
+        <div class="blog-grid" id="blog-grid">
+            <!-- Cards rendered by JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="blog-empty-state" id="blog-empty" style="display: none;">
+            <div class="empty-void-icon">🕳️</div>
+            <div class="empty-title">The void is empty</div>
+            <div class="empty-subtitle">No transmissions yet. Channel your thoughts into the void.</div>
+            <a href="blog-editor.html" class="empty-cta">✦ Write First Post</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+        <div class="blog-footer-text">© 2026 Varun Kumar — Built with cursed energy</div>
+    </footer>
+
+    <script src="blog.js"></script>
+</body>
+
+</html>

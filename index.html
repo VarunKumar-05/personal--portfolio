@@ -112,8 +112,16 @@
                         <span class="skill-tag">Java</span>
                         <span class="skill-tag">SQL</span>
                         <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Qdrant</span>
                         <span class="skill-tag">Docker</span>
                         <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHUB </span>
+                        <span class="skill-tag">Competitive Programming</span>
+                        <span class="skill-tag">Neo4j</span>
+                        <span class="skill-tag">LangChain</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -123,8 +131,13 @@
                     <div class="skill-tags">
                         <span class="skill-tag tag-ai">Machine Learning</span>
                         <span class="skill-tag tag-ai">Deep Learning</span>
+                        <span class="skill-tag tag-ai">Generative-AI</span>
                         <span class="skill-tag tag-ai">RAG</span>
+                        <span class="skill-tag tag-ai">Agentic RAG</span>
+                        <span class="skill-tag tag-ai">Graph-RAG</span>
+                        <span class="skill-tag tag-ai">Fine-Tuning</span>
                         <span class="skill-tag tag-ai">Agentic AI</span>
+                        <span class="skill-tag tag-ai">LLM</span>
                         <span class="skill-tag tag-ai">Multi-Agents</span>
                         <span class="skill-tag tag-ai">Google Multi-Agent Modules</span>
                     </div>
@@ -163,6 +176,19 @@
             </div>
         </section>
 
+        <!-- Blog CTA Section -->
+        <section class="portfolio-section blog-cta-section">
+            <div class="blog-cta-card">
+                <div class="blog-cta-glow"></div>
+                <div class="blog-cta-content">
+                    <div class="blog-cta-icon">✦</div>
+                    <h2 class="blog-cta-title">VOID LOG</h2>
+                    <p class="blog-cta-description">Thoughts, experiments, and dispatches from the infinite void.</p>
+                    <a href="blog.html" class="blog-cta-button">Enter the Void Log →</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section class="contact-section">
             <div class="section-header">
@@ -170,6 +196,7 @@
                 <h2 class="section-title">Get In Touch</h2>
             </div>
             <div class="contact-links">
+                <a href="blog.html" class="contact-link">Blog</a>
                 <a href="https://github.com/VarunKumar-05" target="_blank" class="contact-link">GitHub</a>
                 <a href="https://www.linkedin.com/in/varun-kumar-balasubramanian/" target="_blank"
                     class="contact-link">LinkedIn</a>
@@ -437,13 +464,29 @@
 
             const lerpSpeed = phase === 'dissolve' ? 0.025 : 0.05;
 
-            // Interpolate all vertex positions and colors toward targets
-            for (let i = 0; i < VERTEX_COUNT * 3; i++) {
-                pos[i] += (targetPositions[i] - pos[i]) * lerpSpeed;
-                col[i] += (targetColors[i] - col[i]) * lerpSpeed;
+            // During formation/dissolve: lerp positions and colors toward targets
+            // During void-active: skip position lerp so linear flow takes full control
+            if (phase === 'intro' || phase === 'dissolve') {
+                for (let i = 0; i < VERTEX_COUNT * 3; i++) {
+                    pos[i] += (targetPositions[i] - pos[i]) * lerpSpeed;
+                    col[i] += (targetColors[i] - col[i]) * lerpSpeed;
+                }
+            } else if (phase === 'void-forming') {
+                // Lerp positions to form the shape, but also start inward flow
+                for (let i = 0; i < VERTEX_COUNT * 3; i++) {
+                    pos[i] += (targetPositions[i] - pos[i]) * lerpSpeed;
+                    col[i] += (targetColors[i] - col[i]) * lerpSpeed;
+                }
             }
 
-            // Linear inward flow — streaks converge toward center
+            // Colors always lerp toward targets (keeps color scheme intact)
+            if (phase === 'void-active') {
+                for (let i = 0; i < VERTEX_COUNT * 3; i++) {
+                    col[i] += (targetColors[i] - col[i]) * 0.02;
+                }
+            }
+
+            // Linear inward flow for ALL streaks — converge toward center
             if (phase === 'void-forming' || phase === 'void-active') {
                 for (let i = 0; i < STREAK_COUNT; i++) {
                     const m = streakMeta[i];
@@ -451,7 +494,7 @@
                     const v1 = i * 2 + 1;
                     const pal = PALETTE[m.colorIdx];
 
-                    const inwardSpeed = m.speed * 0.15;
+                    const inwardSpeed = m.speed * 0.18;
 
                     // Move both vertices inward along their radial direction
                     pos[v0 * 3] -= m.dx * inwardSpeed;
@@ -461,15 +504,15 @@
                     pos[v1 * 3 + 1] -= m.dy * inwardSpeed;
                     pos[v1 * 3 + 2] -= m.dz * inwardSpeed;
 
-                    // Check if inner vertex has reached near the center — respawn at outer edge
-                    const dx = pos[v0 * 3] - CENTER_X;
-                    const dy = pos[v0 * 3 + 1];
-                    const dz = pos[v0 * 3 + 2];
-                    const distToCenter = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                    // Distance of the leading (inner) vertex from center
+                    const ddx = pos[v0 * 3] - CENTER_X;
+                    const ddy = pos[v0 * 3 + 1];
+                    const ddz = pos[v0 * 3 + 2];
+                    const distToCenter = Math.sqrt(ddx * ddx + ddy * ddy + ddz * ddz);
 
+                    // Respawn at outer edge when streak reaches center
                     if (distToCenter < 3) {
-                        // Respawn at outer edge
-                        const spawnR = 35 + Math.random() * 40;
+                        const spawnR = 35 + Math.random() * 50;
                         const streakLen = m.baseLen + Math.random() * 5;
                         pos[v0 * 3] = CENTER_X + m.dx * (spawnR + streakLen);
                         pos[v0 * 3 + 1] = m.dy * (spawnR + streakLen);
@@ -478,7 +521,7 @@
                         pos[v1 * 3 + 1] = m.dy * spawnR;
                         pos[v1 * 3 + 2] = m.dz * spawnR;
 
-                        // Refresh color with full brightness
+                        // Refresh color
                         col[v1 * 3] = pal.r;
                         col[v1 * 3 + 1] = pal.g;
                         col[v1 * 3 + 2] = pal.b;
@@ -487,12 +530,12 @@
                         col[v0 * 3 + 2] = pal.b * 0.2;
                     }
 
-                    // Brighten streaks as they approach center (white-hot near convergence)
+                    // Brighten to white as streaks approach convergence point
                     if (distToCenter < 15) {
                         const whiteness = 1 - (distToCenter / 15);
-                        col[v0 * 3] += (1.0 - col[v0 * 3]) * whiteness * 0.1;
-                        col[v0 * 3 + 1] += (1.0 - col[v0 * 3 + 1]) * whiteness * 0.1;
-                        col[v0 * 3 + 2] += (1.0 - col[v0 * 3 + 2]) * whiteness * 0.1;
+                        col[v0 * 3] += (1.0 - col[v0 * 3]) * whiteness * 0.12;
+                        col[v0 * 3 + 1] += (1.0 - col[v0 * 3 + 1]) * whiteness * 0.12;
+                        col[v0 * 3 + 2] += (1.0 - col[v0 * 3 + 2]) * whiteness * 0.12;
                     }
                 }
             }
