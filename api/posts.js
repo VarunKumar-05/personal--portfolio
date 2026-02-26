@@ -9,10 +9,21 @@ const { Pool } = require('pg');
 let pool;
 function getPool() {
     if (!pool) {
+        if (!process.env.DATABASE_URL) {
+            throw new Error('DATABASE_URL environment variable is not set');
+        }
         pool = new Pool({
             connectionString: process.env.DATABASE_URL,
             ssl: { rejectUnauthorized: false },
-            max: 3
+            max: 3,
+            connectionTimeoutMillis: 8000,
+            idleTimeoutMillis: 20000
+        });
+        // Without this handler, a dropped idle connection emits an unhandled
+        // 'error' event that crashes the serverless function process entirely.
+        pool.on('error', (err) => {
+            console.error('Unexpected pg pool error:', err.message);
+            pool = null; // Force recreation on next invocation
         });
     }
     return pool;
@@ -49,10 +60,13 @@ function setCors(res) {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Admin-Key');
 }
 
-// ─── Extract post ID from URL path ──────────────
-function extractId(url) {
-    // URL can be /api/posts/some-id or /api/posts
-    const match = url.match(/\/api\/posts\/([^/?]+)/);
+// ─── Extract post ID from URL path or Vercel rewrite query param ───
+// When vercel.json rewrites /api/posts/:id → /api/posts, Vercel moves
+// the :id segment into req.query.id. Fall back to parsing req.url for
+// direct calls or local development.
+function extractId(req) {
+    if (req.query && req.query.id) return req.query.id;
+    const match = (req.url || '').match(/\/api\/posts\/([^/?]+)/);
     return match ? match[1] : null;
 }
 
@@ -65,10 +79,19 @@ module.exports = async function handler(req, res) {
         return res.status(200).end();
     }
 
+    // Quick health check — useful for debugging
+    if (req.method === 'GET' && req.url === '/api/posts/health') {
+        return res.status(200).json({
+            ok: true,
+            hasDbUrl: !!process.env.DATABASE_URL,
+            hasAdminSecret: !!process.env.ADMIN_SECRET
+        });
+    }
+
     try {
         await ensureTable();
         const db = getPool();
-        const postId = extractId(req.url);
+        const postId = extractId(req);
 
         // ── GET /api/posts — List all posts ──
         if (req.method === 'GET' && !postId) {
@@ -127,7 +150,7 @@ module.exports = async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
 
     } catch (err) {
-        console.error('API Error:', err.message);
-        return res.status(500).json({ error: 'Internal server error' });
+        console.error('API Error:', err.message, err.stack);
+        return res.status(500).json({ error: err.message || 'Internal server error' });
     }
 };
