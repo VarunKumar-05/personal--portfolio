@@ -181,9 +181,13 @@ body.scrollable {
             rgba(0, 0, 0, 0.8) 100%);
 }
 
-/* Title Group — sits above the video */
+/* Title Group — horizontal row: kanji | title | enter */
 .intro-title-group {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
     position: relative;
     z-index: 2;
 }
@@ -206,7 +210,7 @@ body.scrollable {
     font-size: clamp(2rem, 6vw, 5rem);
     font-weight: 900;
     letter-spacing: 8px;
-    margin-top: 12px;
+    margin-top: 0;
     background: linear-gradient(180deg, #ffffff 0%, var(--aesthetic-purple) 50%, var(--purple-accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -219,12 +223,15 @@ body.scrollable {
 
 .intro-kanji {
     font-family: serif;
-    font-size: clamp(1rem, 2.5vw, 1.8rem);
-    letter-spacing: 20px;
-    color: rgba(255, 255, 255, 0.15);
-    margin-top: 8px;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 12px;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 0;
     opacity: 0;
     animation: fadeIn 2s ease 4s forwards;
+    text-shadow: 0 0 20px rgba(183, 148, 244, 0.3);
 }
 
 /* Cross Gesture Icon */
@@ -746,6 +753,20 @@ body.scrollable {
    Responsive
    ============================================ */
 @media (max-width: 768px) {
+    .intro-title-group {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .intro-kanji {
+        writing-mode: horizontal-tb;
+        letter-spacing: 16px;
+    }
+
+    .enter-cta {
+        align-items: center;
+    }
+
     .intro-subtitle {
         font-size: 0.75rem;
         letter-spacing: 6px;
