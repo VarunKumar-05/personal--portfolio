@@ -1,4 +1,7 @@
 {
+    "buildCommand": "",
+    "outputDirectory": ".",
+    "devCommand": "node server.js",
     "rewrites": [
         {
             "source": "/api/posts/:id",

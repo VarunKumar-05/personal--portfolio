@@ -58,7 +58,9 @@ async function initDB() {
         console.log('✦ Database table ready');
     } catch (err) {
         console.error('✕ Database init failed:', err.message);
-        process.exit(1);
+        // Do not call process.exit(1) — it would crash a serverless invocation.
+        // Log the error and let individual route handlers return 500 instead.
+        throw err;
     }
 }
 
@@ -134,9 +136,14 @@ app.delete('/api/posts/:id', requireAdmin, async (req, res) => {
 });
 
 // ─── Start Server ──────────────────────────────
-initDB().then(() => {
-    app.listen(PORT, () => {
-        console.log(`✦ Blog API running on http://localhost:${PORT}`);
-        console.log(`✦ Static files served from ${__dirname}`);
+initDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`✦ Blog API running on http://localhost:${PORT}`);
+            console.log(`✦ Static files served from ${__dirname}`);
+        });
+    })
+    .catch((err) => {
+        console.error('✕ Server failed to start:', err.message);
+        process.exit(1);
     });
-});
