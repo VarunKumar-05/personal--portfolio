@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pursuits — VoidEngineer</title>
+    <meta name="description" content="Live coding activity dashboard — Codeforces, GitHub, LeetCode stats.">
+    <link rel="stylesheet" href="pursuits.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <!-- Film Grain -->
+    <div id="grain"></div>
+
+    <!-- Navigation -->
+    <nav class="pursuits-nav">
+        <a href="index.html" class="nav-back" title="Back to Portfolio">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Portfolio
+        </a>
+        <div class="nav-refresh" id="refresh-btn" title="Refresh Data">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            <span id="last-updated"></span>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="pursuits-content">
+
+        <!-- Hero -->
+        <header class="pursuits-hero">
+            <div class="section-label">Activity</div>
+            <h1 class="pursuits-title">PURSUITS</h1>
+            <p class="pursuits-subtitle">Live coding stats, heatmaps, and ratings — updated in real time.</p>
+        </header>
+
+        <!-- ═══════════════════════════════════════════
+             CODEFORCES SECTION
+             ═══════════════════════════════════════════ -->
+        <section class="platform-section" id="codeforces-section">
+            <div class="platform-header">
+                <div class="platform-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.672 21 0 20.328 0 19.5V9c0-.828.672-1.5 1.5-1.5h3zm9-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-15c0-.828.672-1.5 1.5-1.5h3zm9 7.5c.828 0 1.5.672 1.5 1.5v7.5c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V12c0-.828.672-1.5 1.5-1.5h3z" />
+                    </svg>
+                </div>
+                <div class="platform-info">
+                    <h2 class="platform-name">Codeforces</h2>
+                    <a href="https://codeforces.com/profile/Varunkumar-01" target="_blank"
+                        class="platform-handle">@Varunkumar-01</a>
+                </div>
+                <div class="platform-status" id="cf-status">
+                    <span class="status-dot loading"></span>
+                    <span class="status-text">Loading…</span>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid" id="cf-stats">
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Current Rating</div>
+                </div>
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Max Rating</div>
+                </div>
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Rank</div>
+                </div>
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Problems Solved</div>
+                </div>
+            </div>
+
+            <!-- Rating Graph -->
+            <div class="chart-container">
+                <h3 class="chart-title">Rating Over Time</h3>
+                <div class="chart-wrapper">
+                    <canvas id="cf-rating-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Heatmap -->
+            <div class="heatmap-container">
+                <h3 class="chart-title">Submission Activity</h3>
+                <div class="heatmap-scroll">
+                    <div class="heatmap-grid" id="cf-heatmap"></div>
+                </div>
+                <div class="heatmap-legend">
+                    <span class="heatmap-legend-label">Less</span>
+                    <span class="heatmap-cell" style="background: rgba(183,148,244,0);"></span>
+                    <span class="heatmap-cell" style="background: rgba(183,148,244,0.2);"></span>
+                    <span class="heatmap-cell" style="background: rgba(183,148,244,0.4);"></span>
+                    <span class="heatmap-cell" style="background: rgba(183,148,244,0.65);"></span>
+                    <span class="heatmap-cell" style="background: rgba(183,148,244,0.9);"></span>
+                    <span class="heatmap-legend-label">More</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             GITHUB SECTION
+             ═══════════════════════════════════════════ -->
+        <section class="platform-section" id="github-section">
+            <div class="platform-header">
+                <div class="platform-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                </div>
+                <div class="platform-info">
+                    <h2 class="platform-name">GitHub</h2>
+                    <a href="https://github.com/VarunKumar-05" target="_blank"
+                        class="platform-handle">@VarunKumar-05</a>
+                </div>
+                <div class="platform-status" id="gh-status">
+                    <span class="status-dot loading"></span>
+                    <span class="status-text">Loading…</span>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid" id="gh-stats">
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Contributions (Year)</div>
+                </div>
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Public Repos</div>
+                </div>
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Pull Requests</div>
+                </div>
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Followers</div>
+                </div>
+            </div>
+
+            <!-- Heatmap -->
+            <div class="heatmap-container">
+                <h3 class="chart-title">Contribution Activity</h3>
+                <div class="heatmap-scroll">
+                    <div class="heatmap-grid" id="gh-heatmap"></div>
+                </div>
+                <div class="heatmap-legend">
+                    <span class="heatmap-legend-label">Less</span>
+                    <span class="heatmap-cell" style="background: rgba(45,212,140,0);"></span>
+                    <span class="heatmap-cell" style="background: rgba(45,212,140,0.2);"></span>
+                    <span class="heatmap-cell" style="background: rgba(45,212,140,0.4);"></span>
+                    <span class="heatmap-cell" style="background: rgba(45,212,140,0.65);"></span>
+                    <span class="heatmap-cell" style="background: rgba(45,212,140,0.9);"></span>
+                    <span class="heatmap-legend-label">More</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════
+             LEETCODE SECTION
+             ═══════════════════════════════════════════ -->
+        <section class="platform-section" id="leetcode-section">
+            <div class="platform-header">
+                <div class="platform-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
+                    </svg>
+                </div>
+                <div class="platform-info">
+                    <h2 class="platform-name">LeetCode</h2>
+                    <a href="https://leetcode.com/u/varunkumarBalasubramanian/" target="_blank"
+                        class="platform-handle">@varunkumarBalasubramanian</a>
+                </div>
+                <div class="platform-status" id="lc-status">
+                    <span class="status-dot loading"></span>
+                    <span class="status-text">Loading…</span>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid stats-grid-5" id="lc-stats">
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Total Solved</div>
+                </div>
+                <div class="stat-card skeleton stat-easy">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Easy</div>
+                </div>
+                <div class="stat-card skeleton stat-medium">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Medium</div>
+                </div>
+                <div class="stat-card skeleton stat-hard">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Hard</div>
+                </div>
+                <div class="stat-card skeleton">
+                    <div class="stat-value">—</div>
+                    <div class="stat-label">Contest Rating</div>
+                </div>
+            </div>
+
+            <!-- Contest Rating Graph -->
+            <div class="chart-container">
+                <h3 class="chart-title">Contest Rating</h3>
+                <div class="chart-wrapper">
+                    <canvas id="lc-rating-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Heatmap -->
+            <div class="heatmap-container">
+                <h3 class="chart-title">Submission Activity</h3>
+                <div class="heatmap-scroll">
+                    <div class="heatmap-grid" id="lc-heatmap"></div>
+                </div>
+                <div class="heatmap-legend">
+                    <span class="heatmap-legend-label">Less</span>
+                    <span class="heatmap-cell" style="background: rgba(255,165,0,0);"></span>
+                    <span class="heatmap-cell" style="background: rgba(255,165,0,0.2);"></span>
+                    <span class="heatmap-cell" style="background: rgba(255,165,0,0.4);"></span>
+                    <span class="heatmap-cell" style="background: rgba(255,165,0,0.65);"></span>
+                    <span class="heatmap-cell" style="background: rgba(255,165,0,0.9);"></span>
+                    <span class="heatmap-legend-label">More</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pursuits-footer">
+            <div class="footer-text">© 2026 Varun Kumar — Built with cursed energy</div>
+        </footer>
+    </div>
+
+    <script src="pursuits.js"></script>
+</body>
+
+</html>

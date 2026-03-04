@@ -48,6 +48,35 @@
     </div>
 
     <!-- =============================================
+         Top Navigation Bar
+         ============================================= -->
+    <nav class="portfolio-navbar" id="portfolio-navbar">
+        <a href="index.html" class="navbar-logo">VOID<span>ENGINEER</span></a>
+        <div class="navbar-links">
+            <a href="blog.html" class="navbar-link">
+                <span class="navbar-link-icon">✦</span>
+                Void Log
+            </a>
+            <div class="navbar-divider"></div>
+            <a href="pursuits.html" class="navbar-link">
+                <span class="navbar-link-icon">◈</span>
+                Pursuits
+            </a>
+            <div class="navbar-divider"></div>
+            <a href="Varun_Kumar_Balasubramanian_-_Artificial_Intelligence_Architect.docx" download
+                class="navbar-link navbar-resume">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Resume
+            </a>
+        </div>
+    </nav>
+
+    <!-- =============================================
          PHASE 2: Portfolio Content
          ============================================= -->
     <div id="portfolio-content">
@@ -174,6 +203,156 @@
             </div>
         </section>
 
+        <!-- Internships Section -->
+        <section class="portfolio-section">
+            <div class="section-header">
+                <div class="section-label">Experience</div>
+                <h2 class="section-title">Internships</h2>
+            </div>
+            <div class="internships-timeline">
+
+                <!-- Internship 1: Infosys SpringBoard -->
+                <div class="internship-card">
+                    <div class="internship-accent"></div>
+                    <div class="internship-header">
+                        <div class="internship-icon">🤖</div>
+                        <div class="internship-meta">
+                            <div class="internship-role">AI Intern</div>
+                            <div class="internship-company">Infosys SpringBoard</div>
+                        </div>
+                        <div class="internship-details">
+                            <span class="internship-duration">Jan 2026 — Present</span>
+                            <span class="internship-location">Virtual</span>
+                        </div>
+                    </div>
+                    <p class="internship-summary">
+                        Designed and simulated an AI-powered Hospital IVR system replacing legacy DTMF navigation with a
+                        hybrid ILP-AI architecture for automated symptom triage and emergency ambulance dispatch.
+                    </p>
+                    <div class="internship-highlights">
+                        <div class="internship-highlight">Architected a hybrid ILP + SLM pipeline using Gemma 3:4B for
+                            clinical reasoning and SCIP for optimal ambulance-to-patient assignment</div>
+                        <div class="internship-highlight">Designed an NLU pipeline with speech-to-text, intent
+                            detection, distress classification, and clinical NER for multi-language scenarios</div>
+                        <div class="internship-highlight">Simulated a microservices backend (NestJS + Python) with
+                            PostgreSQL and Redis, handling 1,000+ concurrent call scenarios at 99.9% uptime</div>
+                    </div>
+                    <div class="internship-tech">
+                        <span class="internship-tech-tag">Gemma 3:4B</span>
+                        <span class="internship-tech-tag">NestJS</span>
+                        <span class="internship-tech-tag">PostgreSQL</span>
+                        <span class="internship-tech-tag">Redis</span>
+                        <span class="internship-tech-tag">HL7/FHIR</span>
+                    </div>
+                </div>
+
+                <!-- Internship 2: LightCast -->
+                <div class="internship-card">
+                    <div class="internship-accent"></div>
+                    <div class="internship-header">
+                        <div class="internship-icon">🧠</div>
+                        <div class="internship-meta">
+                            <div class="internship-role">AI/ML Intern</div>
+                            <div class="internship-company">LightCast</div>
+                        </div>
+                        <div class="internship-details">
+                            <span class="internship-duration">Sep 2025 — Present</span>
+                            <span class="internship-location">Virtual</span>
+                        </div>
+                    </div>
+                    <p class="internship-summary">
+                        Built an AI-powered skill intelligence platform to enrich labor market data using knowledge
+                        graphs and LLMs.
+                    </p>
+                    <div class="internship-highlights">
+                        <div class="internship-highlight">Constructed a Neo4j knowledge graph with 2,800+ skill nodes
+                            and 768-dim embeddings capturing skill taxonomy hierarchies</div>
+                        <div class="internship-highlight">Developed a job description enhancement pipeline using Gemini
+                            1.5 Pro with few-shot prompting and chain-of-thought reasoning</div>
+                        <div class="internship-highlight">Trained a Graph Neural Network (GNN) with Node2Vec embeddings
+                            for skill classification and relationship inference</div>
+                    </div>
+                    <div class="internship-tech">
+                        <span class="internship-tech-tag">Neo4j</span>
+                        <span class="internship-tech-tag">Gemini 1.5 Pro</span>
+                        <span class="internship-tech-tag">GNN</span>
+                        <span class="internship-tech-tag">spaCy</span>
+                        <span class="internship-tech-tag">Node2Vec</span>
+                    </div>
+                </div>
+
+                <!-- Internship 3: Ideal Tech Labs -->
+                <div class="internship-card">
+                    <div class="internship-accent"></div>
+                    <div class="internship-header">
+                        <div class="internship-icon">⚡</div>
+                        <div class="internship-meta">
+                            <div class="internship-role">AI Intern</div>
+                            <div class="internship-company">Ideal Tech Labs</div>
+                        </div>
+                        <div class="internship-details">
+                            <span class="internship-duration">May 2025 — Jun 2025</span>
+                            <span class="internship-location">Perungalathur</span>
+                        </div>
+                    </div>
+                    <p class="internship-summary">
+                        Worked on building a scalable AI-powered document query system for enterprise users, enhancing
+                        document search and retrieval using NLP and vector search technologies.
+                    </p>
+                    <div class="internship-highlights">
+                        <div class="internship-highlight">Developed a full-stack RAG system using FastAPI, Streamlit,
+                            MongoDB, Qdrant, and Hugging Face Transformers</div>
+                        <div class="internship-highlight">Implemented real-time semantic search across multiple PDFs
+                            with support for voice-based queries</div>
+                        <div class="internship-highlight">Improved document search speed by 80% with enterprise-grade
+                            concurrent request handling</div>
+                    </div>
+                    <div class="internship-tech">
+                        <span class="internship-tech-tag">FastAPI</span>
+                        <span class="internship-tech-tag">Streamlit</span>
+                        <span class="internship-tech-tag">MongoDB</span>
+                        <span class="internship-tech-tag">Qdrant</span>
+                        <span class="internship-tech-tag">Hugging Face</span>
+                    </div>
+                </div>
+
+                <!-- Internship 4: RE Tech LTD -->
+                <div class="internship-card">
+                    <div class="internship-accent"></div>
+                    <div class="internship-header">
+                        <div class="internship-icon">💻</div>
+                        <div class="internship-meta">
+                            <div class="internship-role">Full-Stack Java Intern</div>
+                            <div class="internship-company">RE Tech LTD</div>
+                        </div>
+                        <div class="internship-details">
+                            <span class="internship-duration">Jul 2024</span>
+                            <span class="internship-location">Tambaram</span>
+                        </div>
+                    </div>
+                    <p class="internship-summary">
+                        Contributed to the end-to-end development of a Restaurant Management System tailored for a local
+                        business client, focusing on order processing, menu management, and billing features.
+                    </p>
+                    <div class="internship-highlights">
+                        <div class="internship-highlight">Developed the backend using Java and MySQL, and built user
+                            interfaces with Java Swing</div>
+                        <div class="internship-highlight">Designed modules for order tracking, table reservation, and
+                            inventory management</div>
+                        <div class="internship-highlight">Delivered the solution with 100% on-time delivery and zero
+                            post-deployment bugs</div>
+                    </div>
+                    <div class="internship-tech">
+                        <span class="internship-tech-tag">Java</span>
+                        <span class="internship-tech-tag">MySQL</span>
+                        <span class="internship-tech-tag">Java Swing</span>
+                        <span class="internship-tech-tag">SDLC</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Blog CTA Section -->
         <section class="portfolio-section blog-cta-section">
             <div class="blog-cta-card">
@@ -195,6 +374,7 @@
             </div>
             <div class="contact-links">
                 <a href="blog.html" class="contact-link">Blog</a>
+                <a href="pursuits.html" class="contact-link">Pursuits</a>
                 <a href="https://github.com/VarunKumar-05" target="_blank" class="contact-link">GitHub</a>
                 <a href="https://www.linkedin.com/in/varun-kumar-balasubramanian/" target="_blank"
                     class="contact-link">LinkedIn</a>
@@ -429,7 +609,7 @@
         const introOverlay = document.getElementById('intro-overlay');
         const portfolioContent = document.getElementById('portfolio-content');
 
-        enterBtn.addEventListener('click', () => {
+        function enterPortfolio() {
             if (phase === 'void-forming' || phase === 'void-active') {
                 phase = 'dissolve';
                 bloomTarget = 0.5;
@@ -440,6 +620,9 @@
                 setTimeout(() => {
                     portfolioContent.classList.add('visible');
                     document.body.classList.add('scrollable');
+                    // Show navbar
+                    const navbar = document.getElementById('portfolio-navbar');
+                    if (navbar) navbar.classList.add('visible');
                     renderer.domElement.style.transition = 'opacity 2s ease';
                     renderer.domElement.style.opacity = '0';
                     setTimeout(() => {
@@ -448,6 +631,13 @@
                     }, 2000);
                 }, 1500);
             }
+        }
+
+        enterBtn.addEventListener('click', enterPortfolio);
+
+        // ─── Keyboard Enter Handler ──────────────────
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') enterPortfolio();
         });
 
         // ─── Animation Loop ────────────────────────
