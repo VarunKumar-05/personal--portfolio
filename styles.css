@@ -368,7 +368,7 @@ body.scrollable {
     position: relative;
     z-index: 8;
     min-height: 100vh;
-    background: linear-gradient(180deg, #000000 0%, #050015 30%, #0a0020 60%, #050015 85%, #000000 100%);
+    background: transparent;
     opacity: 0;
     transition: opacity 1.5s ease;
     display: none;
@@ -377,6 +377,107 @@ body.scrollable {
 #portfolio-content.visible {
     display: block;
     opacity: 1;
+}
+
+/* ─── Landing Background Image ────────────── */
+.landing-bg-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('landing_bg.JPG') center center / contain no-repeat;
+    pointer-events: none;
+}
+
+.landing-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.75) 60%, rgba(0, 0, 0, 0.92) 100%),
+        linear-gradient(180deg, rgba(0, 0, 20, 0.5) 0%, rgba(5, 0, 21, 0.6) 50%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+/* ─── Golden Kanji — Bright Horizontal Bottom Quote ── */
+.golden-kanji-wrapper {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    pointer-events: none;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.golden-kanji-star {
+    font-size: 1.4rem;
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.4);
+    animation: kanjiStarPulse 3s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+@keyframes kanjiStarPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.golden-kanji-bg {
+    font-family: 'Noto Serif JP', 'Yu Mincho', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    background: linear-gradient(135deg, #ffd700 0%, #f5c842 25%, #e8a317 50%, #ffd700 75%, #fff4b0 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.2));
+    animation: goldenShimmer 4s ease-in-out infinite;
+    line-height: 1.4;
+    text-align: center;
+}
+
+@keyframes goldenFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes goldenShimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 /* ─── Hero Section ──────────────────────────── */

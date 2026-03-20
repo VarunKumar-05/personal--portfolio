@@ -146,6 +146,62 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 80px 24px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ─── Golden Mantra — Bright Vertical Quote ── */
+.golden-mantra-wrapper {
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    animation: mantraFloat 8s ease-in-out infinite;
+}
+
+.golden-mantra-bg {
+    font-family: 'Noto Serif JP', 'Yu Mincho', serif;
+    font-size: clamp(4rem, 10vw, 10rem);
+    font-weight: 900;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.18em;
+    background: linear-gradient(135deg, #ffd700 0%, #f5c842 25%, #e8a317 50%, #ffd700 75%, #fff4b0 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 60px rgba(255, 215, 0, 0.25));
+    animation: mantraShimmer 4s ease-in-out infinite;
+    line-height: 1.2;
+    text-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+}
+
+@keyframes mantraFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes mantraShimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 /* ─── Hero ──────────────────────────────────── */

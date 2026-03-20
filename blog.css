@@ -346,6 +346,95 @@ body {
 }
 
 /* ============================================
+   Gojo Satoru Quote
+   ============================================ */
+.gojo-quote {
+    text-align: center;
+    padding: 50px 24px 40px;
+    margin: 0 auto;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 0.9s forwards;
+}
+
+.gojo-quote-decoration {
+    font-size: 1.5rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.2);
+    animation: quoteStarPulse 3s ease-in-out infinite;
+}
+
+@keyframes quoteStarPulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+.gojo-quote-japanese {
+    font-family: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    background: linear-gradient(135deg, #ffd700 0%, #f5c842 30%, #e8a317 50%, #ffd700 80%, #fff4b0 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.25));
+    animation: goldenTextShimmer 4s ease-in-out infinite;
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+@keyframes goldenTextShimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.gojo-quote-english {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255, 215, 0, 0.35);
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.gojo-quote-attribution {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 215, 0, 0.3);
+}
+
+.gojo-quote-attribution span {
+    color: rgba(255, 215, 0, 0.18);
+    margin-left: 4px;
+    font-weight: 400;
+}
+
+/* ============================================
    Blog Card Grid
    ============================================ */
 .blog-grid-container {
