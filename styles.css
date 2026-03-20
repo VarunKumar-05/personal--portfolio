@@ -234,6 +234,50 @@ body.scrollable {
     text-shadow: 0 0 20px rgba(183, 148, 244, 0.3);
 }
 
+/* Enter CTA Button */
+.enter-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(15px);
+    /* Delayed by 6s to appear after the intro sequence */
+    animation: fadeSlideUp 1.5s ease 6s forwards;
+    padding: 10px;
+}
+
+.enter-cta-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    /* Blue color as requested */
+    color: #4da6ff;
+    text-shadow: 0 0 15px rgba(77, 166, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.enter-cta-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4da6ff, transparent);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(77, 166, 255, 0.5);
+}
+
+.enter-cta:hover .enter-cta-text {
+    color: #80c1ff;
+    text-shadow: 0 0 25px rgba(128, 193, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.enter-cta:hover .enter-cta-line {
+    width: 100%;
+}
+
 /* Cross Gesture Icon */
 .cross-gesture {
     margin-top: 60px;
